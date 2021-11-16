@@ -32,8 +32,8 @@
 				<a th:href="@{/exame/altera/{id}(id = ${exame.id})}"
 					class="btn btn-primary">Alterar</a>
 
-				<button type="button" class="btnExclusao btn btn-danger" data-toggle="modal"
-					data-target="#modalExclusao"
+				<button type="button" class="btnExclusao btn btn-danger"
+					data-toggle="modal" data-target="#modalExclusao"
 					th:attr="data-target='#modalExclusao'+${exame.id }">Excluir</button>
 
 				<div class="modal" id="modalExclusao" tabindex="-1" role="dialog"
