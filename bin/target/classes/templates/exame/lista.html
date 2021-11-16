@@ -1,0 +1,73 @@
+<html>
+<head th:replace="~{base::head}">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<div th:replace="~{base::titulo('Lista de Exames')}"></div>
+		<nav th:replace="~{base::menu}"></nav>
+	</div>
+	<div class="container" >
+		<div class="card mt-3" th:each="exame : ${exames}">
+			<div class="card-body">
+				<div class="form-group">
+					Paciente: <span class="text-primary"
+						th:text="${exame.nomePaciente}">Paciente</span>
+				</div>
+				<div class="form-group">
+					Exame: <span class="text-primary" th:text="${exame.nomeExame}">Exame</span>
+				</div>
+				<div class="form-group">
+					Data: <span class="text-primary"
+						th:text="${#temporals.format(exame.dataExame, 'dd/MM/yyyy')}">Data</span>
+				</div>
+				<div class="form-group">
+					Resultado
+					<textarea class="form-control" th:text="${exame.resultadoExame}">Resultado</textarea>
+				</div>
+				<a th:href="@{/exame/altera/{id}(id = ${exame.id})}"
+					class="btn btn-primary">Alterar</a>
+
+				<button type="button" class="btn btn-danger" data-toggle="modal"
+					data-target="#modalExclusao"
+					th:attr="data-target='#modalExclusao'+${exame.id }"
+					id="btnExclusao">Excluir</button>
+
+				<div class="modal" id="modalExclusao" tabindex="-1" role="dialog"
+					aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Confirmação
+									de exclusão</h5>
+								<button type="button" class="close" data-bs-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">Tem certeza que deseja excluir esse
+								exame?</div>
+							<div class="modal-footer">
+								<a type="button" class="btn btn-danger"
+									th:href="@{/exame/exclui/{id}(id = ${exame.id})}"><i
+									class="fa fa-check"></i>Confirma</a>
+								<button type="button" class="btn btn-secondary"
+									data-bs-dismiss="modal">Cancela</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<script type="text/javascript">
+					$('#btnExclusao').on('click', function() {
+						$('#modalExclusao').modal('show');
+					})
+				</script>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
