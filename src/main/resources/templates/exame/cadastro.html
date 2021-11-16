@@ -1,0 +1,41 @@
+<html>
+<head th:replace="~{base::head}"></head>
+<body>
+	<div class="container">
+		<div th:replace="~{base::titulo('Cadastro de Exames')}"></div>
+		<nav th:replace="~{base::menu}"></nav>
+	</div>
+	<div class="container">
+		<div class="card mt-3">
+			<form th:object="${exame}" class="card-body" th:action="@{/exame/registra}" method="post">
+				<div class="form-group">
+					<label for="nomePaciente">Paciente</label>
+					<input th:field="*{nomePaciente}" th:errorclass="is-invalid" class="form-control" placeholder="Nome do paciente">
+					<div th:errors="*{nomePaciente}" class="invalid-feedback">
+						Erros do nome do Paciente
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="nomeExame">Exame</label>
+					<input th:field="*{nomeExame}" th:errorclass="is-invalid" class="form-control" placeholder="Nome do exame">
+					<div th:errors="*{nomeExame}" class="invalid-feedback">
+						Erros do nome do Exame
+					</div>					
+				</div>
+				<div class="form-group">
+					<label for="dataExame">Data</label>
+					<input type="date" th:field="*{dataExame}" th:errorclass="is-invalid" class="form-control" placeholder="Data do exame">
+					<div th:errors="*{dataExame}" class="invalid-feedback">
+						Erros da data do Exame
+					</div>					
+				</div>			
+				<div class="form-group">
+					<label for="resultadoExame">Resultado</label>
+					<textarea th:field="*{resultadoExame}" class="form-control" placeholder="Resultado"></textarea>
+				</div>
+				<button class="btn btn-primary" type="submit">Cadastrar</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
