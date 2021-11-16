@@ -11,7 +11,7 @@
 		<div th:replace="~{base::titulo('Lista de Exames')}"></div>
 		<nav th:replace="~{base::menu}"></nav>
 	</div>
-	<div class="container" >
+	<div class="container">
 		<div class="card mt-3" th:each="exame : ${exames}">
 			<div class="card-body">
 				<div class="form-group">

@@ -44,7 +44,14 @@ public class ExameController {
 	public String registra(Model model, @ModelAttribute("exame") @Valid Exame exame, BindingResult resultado) {
 
 		if (resultado.hasErrors()) {
-			return "/exame/cadastro";
+			if (exame.getId() == null) {
+
+				return "/exame/cadastro";
+			} else {
+
+				return "/exame/altera";
+			}
+
 		}
 
 		try {
