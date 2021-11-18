@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -23,11 +24,13 @@ public class Exame {
 
 	@NotBlank
 	@NotNull
+	@Size(max = 255)
 	@Column(unique = true)
 	private String nomePaciente;
 
 	@NotBlank
 	@NotNull
+	@Size(max = 255)
 	private String nomeExame;
 
 	@NotNull
@@ -35,6 +38,7 @@ public class Exame {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataExame;
 
+	@Size(max = 800)
 	private String resultadoExame;
 
 	public Long getId() {

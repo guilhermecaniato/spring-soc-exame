@@ -33,6 +33,7 @@ public class ExameDtoService implements ExameDto {
 		Exame exame = null;
 
 		if (optional.isPresent()) {
+
 			exame = optional.get();
 		} else {
 
@@ -40,7 +41,6 @@ public class ExameDtoService implements ExameDto {
 		}
 
 		return exame;
-
 	}
 
 	@Override

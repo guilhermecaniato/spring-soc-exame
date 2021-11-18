@@ -58,9 +58,9 @@ public class ExameController {
 
 			exameDtoService.registraExame(exame);
 
-		} catch (Exception ex) {
+		} catch (Exception e) {
 
-			model.addAttribute("erroMensagem", ex.getMessage());
+			model.addAttribute("erroMensagem", e.getMessage());
 
 			return "/error";
 		}
@@ -71,7 +71,17 @@ public class ExameController {
 	@GetMapping("/altera/{id}")
 	public String altera(@PathVariable(value = "id") Long id, Model model) {
 
-		Exame exame = exameDtoService.listaExamePorId(id);
+		Exame exame;
+
+		try {
+
+			exame = exameDtoService.listaExamePorId(id);
+		} catch (Exception e) {
+
+			model.addAttribute("erroMensagem", e.getMessage());
+
+			return "/error";
+		}
 
 		model.addAttribute("exame", exame);
 

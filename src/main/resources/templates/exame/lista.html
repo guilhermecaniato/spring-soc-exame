@@ -26,8 +26,8 @@
 						th:text="${#temporals.format(exame.dataExame, 'dd/MM/yyyy')}">Data</span>
 				</div>
 				<div class="form-group">
-					Resultado
-					<textarea class="form-control" th:text="${exame.resultadoExame}">Resultado</textarea>
+					Resultado / Observações
+					<textarea class="form-control" th:text="${exame.resultadoExame}">Resultado / Observações</textarea>
 				</div>
 				<a th:href="@{/exame/altera/{id}(id = ${exame.id})}"
 					class="btn btn-primary">Alterar</a>

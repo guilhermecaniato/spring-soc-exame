@@ -7,32 +7,36 @@
 	</div>
 	<div class="container">
 		<div class="card mt-3">
-			<form th:action="@{/exame/registra}" th:object="${exame}" class="card-body" method="post">
+			<form th:action="@{/exame/registra}" th:object="${exame}"
+				class="card-body" method="post">
 				<div class="form-group">
-					<input type="hidden" th:field="*{id}">
-					<label for="nomePaciente">Paciente</label>
-					<input th:field="*{nomePaciente}" th:errorclass="is-invalid" class="form-control" placeholder="Nome do paciente">
+					<input type="hidden" th:field="*{id}"> <label
+						for="nomePaciente">Paciente</label> <input
+						th:field="*{nomePaciente}" th:errorclass="is-invalid"
+						class="form-control" placeholder="Nome do paciente">
 					<div th:errors="*{nomePaciente}" class="invalid-feedback">
-						Erros do nome do Paciente
-					</div>
+						Erros do nome do Paciente</div>
 				</div>
 				<div class="form-group">
-					<label for="nomeExame">Exame</label>
-					<input th:field="*{nomeExame}" th:errorclass="is-invalid" class="form-control" placeholder="Nome do exame">
-					<div th:errors="*{nomeExame}" class="invalid-feedback">
-						Erros do nome do Exame
-					</div>					
+					<label for="nomeExame">Exame</label> <input th:field="*{nomeExame}"
+						th:errorclass="is-invalid" class="form-control"
+						placeholder="Nome do exame">
+					<div th:errors="*{nomeExame}" class="invalid-feedback">Erros
+						do nome do Exame</div>
 				</div>
 				<div class="form-group">
-					<label for="dataExame">Data</label>
-					<input type="date" th:field="*{dataExame}" th:errorclass="is-invalid" class="form-control" placeholder="Data do exame">
-					<div th:errors="*{dataExame}" class="invalid-feedback">
-						Erros da data do Exame
-					</div>					
-				</div>			
+					<label for="dataExame">Data</label> <input type="date"
+						th:field="*{dataExame}" th:errorclass="is-invalid"
+						class="form-control" placeholder="Data do exame">
+					<div th:errors="*{dataExame}" class="invalid-feedback">Erros
+						da data do Exame</div>
+				</div>
 				<div class="form-group">
-					<label for="resultadoExame">Resultado</label>
-					<textarea th:field="*{resultadoExame}" class="form-control" placeholder="Resultado"></textarea>
+					<label for="resultadoExame">Resultado / Observações</label>
+					<textarea th:field="*{resultadoExame}" th:errorclass="is-invalid"
+						class="form-control" placeholder="Resultado / Obserções do exame"></textarea>
+					<div th:errors="*{resultadoExame}" class="invalid-feedback">
+						Erros do Resultado / Observações do Exame</div>
 				</div>
 				<button class="btn btn-primary" type="submit">Alterar</button>
 			</form>
